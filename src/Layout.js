@@ -69,18 +69,21 @@ function Layout() {
     };
 
     const deleteNote = () => {
-        let activePos = noteArray.findIndex(note => note.id === activeNote)
-        setNotes(noteArray.filter((note) => note.id !== activeNote))
-        if (noteArray.length >= 2) {
-            try {
-                setActiveNote(noteArray[activePos + 1].id);
+        const answer = window.confirm("Are you sure?");
+        if (answer) {
+            let activePos = noteArray.findIndex(note => note.id === activeNote)
+            setNotes(noteArray.filter((note) => note.id !== activeNote))
+            if (noteArray.length >= 2) {
+                try {
+                    setActiveNote(noteArray[activePos + 1].id);
+                }
+                catch(err){
+                    setActiveNote(noteArray[noteArray.length - 2].id);
+                }
             }
-            catch(err){
-                setActiveNote(noteArray[noteArray.length - 2].id);
+            else {
+                navigate(`/notes`);
             }
-        }
-        else {
-            navigate(`/notes`);
         }
     }
 
@@ -125,7 +128,8 @@ function Layout() {
             <div className = "headerBar">
                 <button id = "toggleButton" className = "toggleButton" onClick = {() => toggleSidebar()}>&#9776;</button>
                 <div className = "title">
-                    <h1>Notes</h1>
+                    <div className = "title-part"><h1>Lotion</h1></div>
+                    <div className = "subtitle-part"><h3>Like notion, but worse.</h3></div>
                 </div>
             </div>
             <div className = "mainparts">

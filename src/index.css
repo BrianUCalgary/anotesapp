@@ -43,7 +43,18 @@ button {
 .title {
   flex: 9;
   justify-content: center;
+  display: block;
+}
+
+.title-part {
+  justify-content: center;
   display: flex;
+}
+
+.subtitle-part {
+  justify-content: center;
+  display: flex;
+  color: grey;
 }
 
 .mainparts {
