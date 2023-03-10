@@ -40,7 +40,6 @@ function Layout() {
 
         setNotes([newNote, ...noteArray]);
         setActiveNote(newNote.id);
-        navigate(`notes/${newNote.id}/edit`);
     }
 
     function toggleSidebar() {
